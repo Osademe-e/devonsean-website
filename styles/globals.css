@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Halimun;
+  src: url(Halimun.ttf);
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.font-halimun{
+  font-family: Halimun;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (min-width: 1200px) {
+  .swiper.lead-swiper {
+    width: 100%;
+    height: 60vh;
+  }
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  /* height: 100%; */
+  object-fit: cover;
+  object-position: center;
+}
+
+.swiper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sliderarrow a {
+  background: url(/arrow.png) no-repeat 0px 0px;
+  height: 88px;
+  width: 88px;
+  float: left;
+  cursor: pointer;
+  text-indent: -9999px;
+}
+
+.sliderarrow a.left-arrow:hover {
+  background-position: 0px -96px;
+}
+
+.sliderarrow a.right-arrow {
+  background-position: -96px 0px;
+}
+.sliderarrow a.right-arrow:hover {
+	background-position: -96px -96px;
+}
+
+.founder-box{
+  height: calc(100% + 96px);
+}
