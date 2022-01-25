@@ -96,3 +96,20 @@ a {
 .founder-box{
   height: calc(100% + 96px);
 }
+
+
+@media (min-width: 1025px){
+.competition{
+  height: 145px;
+    max-height: 175px;
+    background: url(/total-web.png) no-repeat top center, linear-gradient(-230deg,#7e0000,#bb0000,#a50000);
+    background-size: contain;
+}
+.competition img {
+  visibility: hidden;
+}
+}
+
+.share-likes{
+  background-image: linear-gradient(-230deg,#7e0000,#bb0000,#a50000)
+}

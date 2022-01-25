@@ -86,7 +86,7 @@ export default function Header() {
         <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <a href="#">
-              <span className="sr-only">Workflow</span>
+              <span className="sr-only">Devon Sean</span>
               <img
                 className="h-8 w-auto sm:h-10"
                 src="/logo-plain.png"
@@ -101,7 +101,7 @@ export default function Header() {
             </Popover.Button>
           </div>
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
-            <Popover className="">
+            {/* <Popover className="">
               {({ open }) => (
                 <>
                   <Popover.Button
@@ -164,16 +164,18 @@ export default function Header() {
                   </Transition>
                 </>
               )}
-            </Popover>
+            </Popover> */}
 
-            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-300">
-              Pricing
+            <a href="#features" className="text-base font-medium text-gray-500 hover:text-gray-300">
+              Features
             </a>
-            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-300">
-              Docs
+            <a href="#download" className="text-base font-medium text-gray-500 hover:text-gray-300">
+              Download
+            </a><a href="#contact" className="text-base font-medium text-gray-500 hover:text-gray-300">
+              Contact
             </a>
 
-            <Popover className="">
+            {/* <Popover className="">
               {({ open }) => (
                 <>
                   <Popover.Button
@@ -243,7 +245,7 @@ export default function Header() {
                   </Transition>
                 </>
               )}
-            </Popover>
+            </Popover> */}
           </Popover.Group>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             <a href="#" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
