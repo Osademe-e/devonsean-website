@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import Header from "../components/Header";
 import bgimage from "../public/tools.jpg";
 
@@ -16,11 +15,10 @@ export default function Privacy() {
         <section>
           <div className="relative">
             <div className="absolute w-full h-full overflow-hidden">
-              <Image
+              <img
                 src={bgimage}
                 alt="Background image"
-                layout="fill"
-                objectFit="cover"
+                className="w-full h-full"
               />
             </div>
 
