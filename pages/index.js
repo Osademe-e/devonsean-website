@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Hair By | Devon Sean</title>
+        <title>Hair By Devon Sean</title>
         <meta name="description" content="Generated Team Devon Sean" />
         <link rel="icon" href="/favicon.png" />
       </Head>
@@ -104,11 +104,11 @@ export default function Home() {
             <div className="col-span-6 lg:col-span-2 h-full">
               <div className="relative lg:-mt-24 z-10 founder-box">
                 <img
-                  src="/mimi.jpeg"
+                  src="/me.jpeg"
                   className="absolute w-full h-full object-cover"
                 />
-                <div className="w-full h-full bg-black/60 p-6 relative">
-                  <h1 className="text-gray-50 text-2xl lg:text-6xl font-extralight pt-16">
+                <div className="w-full h-full bg-black/40 p-6 relative">
+                  <h1 className="text-gray-50 text-2xl lg:text-6xl font-extralight pt-40">
                     Founder's <br /> Story
                   </h1>
                 </div>
@@ -131,15 +131,9 @@ export default function Home() {
                     The Inspiration
                   </h3>
                   <p className="text-gray-400 font-light">
-                    I made the decision to go
-                    Natural and never use chemicals on my hair... It's 8 years
-                    now and I've grown a healthy and luscious natural African
-                    hair. <br />
-                    In the first 2 years of my Natural Hair journey I lived in
-                    Ghana, Koforidua to be precise. It was quite easy to
-                    maintain my natural hair there. But I had to move back to
-                    Nigeria and just then I saw the gap in the Nigerian beauty
-                    sector.
+                    I want to make an amazing product that impacts lifestyle,
+                    create newer opportunities and bring services, and products one step
+                    closer to customers, businesses and artisans.
                   </p>
                 </div>
                 <div className="p-4">
@@ -147,7 +141,7 @@ export default function Home() {
                     Bridging The Gap
                   </h3>
                   <p className="text-gray-400 font-light">
-                    Hair by Devon Sean bridges the gap between customers and
+                    Hair By Devon Sean bridges the gap between customers and
                     vendors when purchasing Natural ingredients, Proper care for
                     the hair, Knowledge on what works for different hair types,
                     The right treatment, Proper styling, salon management, and
@@ -159,7 +153,7 @@ export default function Home() {
                     The Opportunity
                   </h3>
                   <p className="text-gray-400 font-light">
-                    At Devon Sean we seek to close that gap by infusing
+                    At Hair By Devon Sean we seek to close that gap by infusing
                     technology, artisan and knowledge into the African beauty
                     industry. We provide high visibility, Trainings for stylist,
                     barbers and staff, Providing the right product per hair
@@ -168,7 +162,7 @@ export default function Home() {
                 </div>
                 <div className="p-4">
                   <h2 className="text-gray-500 text-2xl font-halimun">
-                    Alex Mimi.
+                    Osademe E. O.
                   </h2>
                 </div>
               </div>
@@ -581,7 +575,7 @@ export default function Home() {
       </section>
 
       {/* competion */}
-      <section className="competition">
+      {/* <section className="competition">
         <img src="/total.png" className="" />
       </section>
       <section className="share-likes ">
@@ -691,7 +685,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }
