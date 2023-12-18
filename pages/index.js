@@ -17,7 +17,8 @@ import { useEffect } from "react";
 SwiperCore.use([Autoplay, EffectFade, Navigation]);
 
 import {useContactForm} from "@beantech-designs/contact-form";
-import {toast} from "react-toastify"
+import {ToastContainer, toast} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css";
 
 function playPauseVideo() {
   let videos = document.querySelectorAll("video");
@@ -53,12 +54,10 @@ export default function Home() {
   }, []);
 
   const onSuccess = (data) => {
-    toast.success(data)
+    toast.success(`Succcess: ${data.success}`)
   }
 
-  const onError = (error) => {
-    toast.error(error)
-  }
+  const onError = (error) => toast.error(`Error: ${error.message}`)
 
   const options = {
     url: "https://www.devonsean.com/email.php",
@@ -619,6 +618,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+
+      <ToastContainer position='bottom-center' hideProgressBar={true}/>
     </>
   );
 }
