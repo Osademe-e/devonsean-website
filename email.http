@@ -1,9 +1,0 @@
-###
-POST https://devonsean.com/email.php HTTP/1.1
-content-type: application/json
-
-{
-    "to": ["info@devonsean.com"],
-    "subject": "Testing email from McDecoil laptop",
-    "body": "Yup! it works."
-}
