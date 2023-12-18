@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import {ToastContainer} from "react-toastify"
 
 export default class MyDocument extends Document {
     render() {
@@ -9,6 +10,7 @@ export default class MyDocument extends Document {
                 <body >
                     <Main />
                     <NextScript />
+                    <ToastContainer/>
                 </body>
             </Html>
         );

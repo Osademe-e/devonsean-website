@@ -16,6 +16,9 @@ import { useEffect } from "react";
 // install Swiper modules
 SwiperCore.use([Autoplay, EffectFade, Navigation]);
 
+import {useContactForm} from "@beantech-designs/contact-form";
+import {toast} from "react-toastify"
+
 function playPauseVideo() {
   let videos = document.querySelectorAll("video");
   videos.forEach((video) => {
@@ -48,6 +51,26 @@ export default function Home() {
   useEffect(() => {
     playPauseVideo();
   }, []);
+
+  const onSuccess = (data) => {
+    toast.success(data)
+  }
+
+  const onError = (error) => {
+    toast.error(error)
+  }
+
+  const options = {
+    url: "https://www.devonsean.com/email.php",
+    companyEmailAddress: "info@devonsean.com",
+    onSuccess,
+    onError,
+    template: function(email, fullName, message){
+      return (`<h1>Name: ${fullName}</h1> <br/> <h2>Email: ${email}</h2> <br/> <p>Message: ${message}</p>`)
+    }
+  }
+
+  const {form} = useContactForm(options);
 
   return (
     <>
@@ -483,33 +506,56 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Form area */}
             <div className="col-span-6 lg:col-span-4">
-              <form>
+              <form onSubmit={form.handleSubmit}>
                 <div className="shadow overflow-hidden sm:">
                   <div className="px-4 py-5 bg-gray-800 sm:p-6">
                     <div className="grid grid-cols-6 gap-6">
-                      <div className="col-span-6 sm:col-span-3">
-                        <label
-                          htmlFor="email"
-                          className="block text-sm font-medium text-gray-300"
-                        >
-                          Email address
-                        </label>
-                        <input
-                          type="text"
-                          name="email"
-                          id="email"
-                          // onChange={formik.handleChange}
-                          // value={formik.values.email}
-                          autoComplete="email"
-                          className="bg-gray-300  mt-1 focus:ring-brand-500 focus:border-brand-500 block w-full shadow-sm sm:text-sm border-gray-300 "
-                        />
-                        {/* {formik.touched.email && formik.errors.email ? (
-                        <p className="text-red-500 text-xs italic">
-                          {formik.errors.email}
-                        </p>
-                      ) : null} */}
-                      </div>
+                    <div className="col-span-6">
+                      <label
+                        htmlFor="fullName"
+                        className="block text-sm font-medium text-gray-300"
+                      >
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        name="fullName"
+                        id="fullName"
+                        onChange={form.handleChange}
+                        value={form.values.fullName}
+                        className="bg-gray-300  mt-1 focus:ring-brand-500 focus:border-brand-500 block w-full shadow-sm sm:text-sm border-gray-300 "
+                      />
+                      {form.touched.fullName && form.errors.fullName ? (
+                      <p className="text-red-500 text-xs italic">
+                        {form.errors.fullName}
+                      </p>
+                    ) : null}
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-3">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-300"
+                      >
+                        Email address
+                      </label>
+                      <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        onChange={form.handleChange}
+                        value={form.values.email}
+                        autoComplete="email"
+                        className="bg-gray-300  mt-1 focus:ring-brand-500 focus:border-brand-500 block w-full shadow-sm sm:text-sm border-gray-300 "
+                      />
+                      {form.touched.email && form.errors.email ? (
+                      <p className="text-red-500 text-xs italic">
+                        {form.errors.email}
+                      </p>
+                    ) : null}
+                    </div>
 
                       <div className="col-span-6 sm:col-span-3">
                         <label
@@ -521,17 +567,17 @@ export default function Home() {
                         <input
                           type="text"
                           name="subject"
-                          // onChange={formik.handleChange}
-                          // value={formik.values.subject}
+                          onChange={form.handleChange}
+                          value={form.values.subject}
                           id="subject"
                           autoComplete="address-level1"
                           className="bg-gray-300 mt-1 focus:ring-brand-500 focus:border-brand-500 block w-full shadow-sm sm:text-sm border-gray-300 "
                         />
-                        {/* {formik.touched.subject && formik.errors.subject ? (
+                        {form.touched.subject && form.errors.subject ? (
                         <p className="text-red-500 text-xs italic">
-                          {formik.errors.subject}
+                          {form.errors.subject}
                         </p>
-                      ) : null} */}
+                      ) : null}
                       </div>
 
                       <div className="col-span-6">
@@ -544,27 +590,27 @@ export default function Home() {
                         <textarea
                           type="text"
                           name="message"
-                          // onChange={formik.handleChange}
-                          // value={formik.values.message}
+                          onChange={form.handleChange}
+                          value={form.values.message}
                           id="message"
                           autoComplete="message"
                           className="bg-gray-300 mt-1 sm:h-48 h-40 focus:ring-brand-500 focus:border-brand-500 block w-full shadow-sm sm:text-sm border-gray-300  resize-none"
                         ></textarea>
-                        {/* {formik.touched.message && formik.errors.message ? (
+                        {form.touched.message && form.errors.message ? (
                         <p className="text-red-500 text-xs italic">
-                          {formik.errors.message}
+                          {form.errors.message}
                         </p>
-                      ) : null} */}
+                      ) : null}
                       </div>
                     </div>
                   </div>
                   <div className="px-4 py-3 bg-gray-900 text-right sm:px-6">
                     <button
                       type="submit"
-                      // disabled={formik.isSubmitting}
+                      disabled={form.isSubmitting}
                       className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium  text-white bg-brand-600 hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500"
                     >
-                      Send
+                      {form.isSubmitting ? "Sending" : "Send"}
                     </button>
                   </div>
                 </div>
@@ -573,119 +619,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* competion */}
-      {/* <section className="competition">
-        <img src="/total.png" className="" />
-      </section>
-      <section className="share-likes ">
-        <div className="max-w-7xl mx-auto  p-4 pb-10">
-          <div className="grid grid-cols-6 gap-10">
-            <div className="col-span-6 lg:col-span-3 lg:order-2">
-              <video preload="none" width="100%" height="100%" controls>
-                <source src="like-steps.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div className="col-span-6 lg:col-span-3 lg:order-1">
-              <h1 className="text-gray-50 text-2xl lg:text-6xl font-extralight">
-                Share For Likes
-              </h1>
-              <p className="text-gray-100 font-light py-4">
-                Please follow the steps below to help us win the Startupper
-                Challenge of the year by TotalEnergies
-              </p>
-              <div className="grid grid-cols-6 gap-4">
-                <div className="col-span-6 flex flex-row justify-start items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#ffffff"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-
-                  <p className="text-gray-100 font-light ml-4">
-                    1. Visit
-                    <Link href="https://startupper.totalenergies.com/juries/zQhZ1VKY1YekVoBD2vb7cw/participations/24181/vote?order=random&scope=all">
-                      <a
-                        className="text-gray-50 font-light ml-4 bg-gray-50/10 rounded p-2 text-xs"
-                        target="_blank"
-                      >
-                        TotalEnergies Startupper Challenge
-                      </a>
-                    </Link>
-                  </p>
-                </div>
-                <div className="col-span-6 flex flex-row justify-start items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#ffffff"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                    />
-                  </svg>
-                  <p className="text-gray-100 font-light ml-4">
-                    2. Create Account
-                  </p>
-                </div>
-                <div className="col-span-6 flex flex-row justify-start items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#ffffff"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
-                  <p className="text-gray-100 font-light ml-4">
-                    3. Search for <strong>Devon Sean</strong>
-                  </p>
-                </div>
-                <div className="col-span-6 flex flex-row justify-start items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="#ffffff"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
-                  </svg>
-                  <p className="text-gray-100 font-light ml-4">
-                    4. Like project
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 }
